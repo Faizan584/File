@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script>
+function searchGames() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let games = document.getElementsByClassName("game-item");
+
+    for (let i = 0; i < games.length; i++) {
+        let title = games[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+
+        if (title.includes(input)) {
+            games[i].style.display = "";
+        } else {
+            games[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robin Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff4655; /* Valorant Red */
+            --bg-dark: #0a0a0a;
+            --card-bg: #161616;
+            --text-main: #ffffff;
+            --text-dim: #b3b3b3;
+        }
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+ body {
+            background-color: var(--bg-dark);
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('Gemini_Generated_Image_t7jxvgt7jxvgt7jx.png');
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            line-height: 1.6;
+    background-image: url('Gemini_Generated_Image_t7jxvgt7jxvgt7jx.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #000; /* Agar image load na ho toh black rahe */
+}
+        
+              /* --- HEADER --- */
+    header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: #0a0a0a; /* Bilkul dark background */
+    position: fixed; /* Screen pe chipka rahega */
+    width: 100%;
+    top: 0;
+    left: 0;
+        z-index: 10000; /* Isse header sab ke upar rahega */
+    border-bottom: 2px solid#ff4655; /* Blue line jaisa image mein hai */
+}
+ .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+.logo span { color: var(--primary); }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), 
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 140px;
+    margin-top: 100px; /* Header ki height ke mutabiq jagah choren */
+    position: relative;
+    z-index: 1; /* Header se niche rakhne ke liye */
+}
+
+
+        
+
+        .search-bar {
+            display: flex;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            background-color: #222;
+            color: #fff;
+        }
+        .search-bar button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            background-color: #ff4655;
+            color: #fff;
+            cursor: pointer;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #333;
+        }
+.hero{
+    height: 50vh;
+    background-size:center;
+    background-position: center;
+    position: relative;
+}
+
+.hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6); /* dark overlay */
+}
+
+.hero-content{
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+     .hero-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+/* Buttons ka container */
+.hero-btns {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Dono buttons ke beech ka fasla */
+}
+
+/* Base style dono buttons ke liye */
+.btn {
+    padding: 12px 35px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif; /* Gaming font */
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+/* 1. Red Filled Button (Browse Games) */
+.btn-filled {
+    background-color: #ff4655; /* Image wala red color */
+    color: white;
+    border: 2px solid #ff4655;
+}
+
+.btn-filled:hover {
+    background-color:#ff4655;
+    transform: translateY(-3px); /* Thoda upar uthega hover pe */
+    box-shadow: 0 5px 15px rgba(255, 70, 85, 0.4);
+}
+
+/* 2. Outline Button (Trending Now) */
+.btn-outline {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background-color: white;
+    color: black;
+    transform: translateY(-3px);
+}
+       
+
+
+        /* Tabs */
+        .tabs {
+          padding: 150px 5%;
+            text-align: center
+}
+        
+        .tab-buttons {
+         margin-bottom: 0px;
+        }
+        .tab-button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            font-family: 'Oswald', sans-serif;
+            margin: 0 2px;
+            cursor: pointer;
+            padding-bottom: 5px;
+            opacity: 0.6;
+        }
+        .tab-button.active {
+            opacity: 1;
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary);
+        }
+        .tab-button:hover {
+            background-color: #333;
+        }
+        .tab-content {
+            padding: 5px;
+        }
+        .tab-content.active {
+
+        }
+
+        /* Main content */
+        main {
+            padding: 0px;
+        }
+        .game-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .game-item {
+            background-color: #000000;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .game-item:hover {
+            transform: scale(1.05);
+        }
+        .game-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .game-item h3 {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        .game-item p {
+            color: #ccc;
+            font-size: 14px;
+        }
+main{
+    padding-bottom: 100px;
+}
+
+.about{
+    background: linear-gradient(180deg, #0b0b0b, #000);
+    padding: 80px 20px;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.about h2{
+    color:#ff4655;
+    font-size:36px;
+    margin-bottom:15px;
+    text-shadow:0 0 15px #ff4655;
+}
+
+.about p{
+    color:#ddd;
+    max-width:900px;
+    margin:auto;
+    font-size:17px;
+    line-height:1.8;
+}
+
+/* Button click hone par effect */
+.btn-download:active {
+    transform: translateY(-1px);
+}
+.neon-red-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 5px;
+    color: #ff4655; /* Red Text */
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border: 2px solid #ff4655; /* Border color */
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s;
+    
+    /* Neon Glow Effect */
+    box-shadow: 0 0 10px #ff4655, inset 0 0 5px #ff4655;
+    text-shadow: 0 0 5px #ff4655;
+}
+
+/* Hover Effect: Jab mouse upar jaye */
+.neon-red-btn:hover {
+    color: #ffffff;
+    background: #ff4655;
+    /* Extra Bright Glow on Hover */
+    box-shadow: 0 0 20px #ff4655, 0 0 50px #ff4655, 0 0 100px #ff4655;
+}
+
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #333;
+            margin-top: 200px;
+           
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .search-bar {
+                margin: 10px 0;
+            }
+            nav ul {
+                justify-content: center;
+            }
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+         <div class="logo">ROBIN<span>  GAMES</span></div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search games..." onkeyup="searchGames()">
+<button onclick="searchGames()">Search</button>
+
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            
+            </ul>
+        </nav>
+    </header>
+    <section id="home"></section>
+<section class="hero">
+    <div class="hero-content">
+        <span style="color:var(--primary); font-weight: bold;"> PC GAMES & ANDROID GAMES</span>
+        <h1>WELCOME TO ROBIN GAMES</h1>
+        <p>Download PC & Android Games in One Click</p>
+          <div class="hero-btns">
+    <a href="#games" class="btn btn-filled">BROWSE GAMES</a>
+
+</div>
+    </div>
+</section>
+
+
+
+
+    <!-- Tabs -->
+    <div class="tabs">
+        <div class="tab-buttons">
+            <button class="tab-button active" onclick="openTab(event, 'pc')">PC Games</button>
+        </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div id="pc" class="tab-content active">
+        <main>
+            <h2>PC Games</h2>
+            <div class="game-list">
+                <div class="game-item">
+    <img src="images/gta.jpg" alt="GTA 5">
+    <h3>GTA 5</h3>
+                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+    <p>GTA 5 is an open world Online/Offline Game of Rockstar North.</p>
+
+    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="GTA 5.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+</div>
+
+                
+                <div class="game-item">
+                    <img src="images\red 2.jpg" alt="Game 2">
+                    <h3>Read Dead Redemption 2</h3>
+                    <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Read Dead Redemption 2 is a open world Online./Offline Game Of Rockstar North.</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="red dead.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                </div>
+                <div class="game-item">
+                    <img src="images\Kamla.jfif" alt="Game 2">
+                    <h3>Kamala</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Kamala is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="kanala.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\1.jpg" alt="Game 2">
+                    <h3>Granny Chp 2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p> granny is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 500 MB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="granny.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\2.jpg" alt="Game 2">
+                    <h3>GTA SAN</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Gta san is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 400 MB</p>
+    <p><b>Platform:</b> PC</p>
+
+  <a href="gtta san.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\3.jpg" alt="Game 2">
+                    <h3>GTA 4</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>GTA 4 is a open world Online./Offline .</p>
+                    <p><b>Size:</b> 400 MB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="gta 4.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\4.jpg" alt="Game 2">
+                    <h3>gta Layari express</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>GTA layari express is a open world Online./Offline .</p>
+                    <ul style="line-height: 2.2; list-style: none; padding: 0; color: #cbd5e1;">
+                        <li><b>OS:</b> Windows 10/11 64-Bit</li>
+                        <li><b>Processor:</b> Intel i5-9400 / Ryzen 5 2600
+                    </ul>
+
+    <a href="layari exp.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\5.jpg" alt="Game 2">
+                    <h3>DEAD OR Alive</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Dead or Alive is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="dead or alive.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\6.jpg" alt="Game 2">
+                    <h3>Medal Of Honor Night commando</h3>
+                    <p>MOH NC is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 585 MB</p>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="moh nc.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\7.jpg" alt="Game 2">
+                    <h3>Left 4 Dead 1</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Left 4 dead is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="l4d1.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\8.jpg" alt="Game 2">
+                    <h3>Left 4 dead 2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Left 4 Dead 2 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="l4d 2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\9.jpg" alt="Game 2">
+                    <h3>Meadal  of Honor </h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Medal Of Honor</p>is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 1.8 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="moh.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\10.jpg" alt="Game 2">
+                    <h3>Last Of Us 2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Last Of Us 2 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+<a href="last of us 2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\11.jpg" alt="Game 2">
+                    <h3>Bright Memory Infinitive</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Bright Memory infinitive is a open world Online./Offline Game .</p><p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="bright.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\12.jpg" alt="Game 2">
+                    <h3>Call of duty 1</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD1 is a open world Online./Offline .</p><p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod 1.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\13.jpg" alt="Game 2">
+                    <h3>Call of duty 2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD 2 is a open world Online./Offline .</p><p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod 2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\14.jpg" alt="Game 2">
+                    <h3>Call of duty 3</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD 3 is a open world Online./Offline .</p><p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+   <a href="cod 3.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\15.jpg" alt="Game 2">
+                    <h3>Call of Duty 4 Modren Ware fare 1</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD 4 MW1 is a open world Online./Offline .</p><p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod 4 mw 1.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\16.jpg" alt="Game 2">
+                    <h3>Call of Duty 4 modren Warfare 2(2009)</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD MW2 is a open world Online./Offline .</p>
+                    <p><b>Size:</b> 3.7 GB</p>
+                    <p><b>Platform:</b> PC</p>
+                <a href="cod 4 mw 2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\17.jpg" alt="Game 2">
+                    <h3>Call Of duty Modren Warfar 2 (2022)</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD MW2(2022) is a open world Online./Offline .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod 4 mw 2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\18.jpg" alt="Game 2">
+                    <h3>Call Of duty black ops 1</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD BO1 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod bo1.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\19.jpg" alt="Game 2">
+                    <h3>Call Of duty black ops2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD BO2 is a open world Online./Offline Game.</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod bo2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\20.jpg" alt="Game 2">
+                    <h3>Call Of duty black ops 3</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD BO3 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod bo3.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\21.jpg" alt="Game 2">
+                    <h3>Call Of duty black ops 4</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD BO4 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod bo4.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\22.jpg" alt="Game 2">
+                    <h3>Call Of duty black ops 5</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD BO5 is a open world Online./Offline Game.</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod bo5.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\23.jpg" alt="Game 2">
+                    <h3>Call Of duty black ops 6</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD BO6 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod bo6.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\24.jpg" alt="Game 2">
+                    <h3>Call Of duty black ops 7</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>COD BO7 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="cod bo6.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (4).jpg" alt="Game 2">
+                    <h3>Battlefield 1</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>BF 1 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="b1.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (3).jpg" alt="Game 2">
+                    <h3>Battlefield 2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>BF 2is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="b2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (2).jpg" alt="Game 2">
+                    <h3>Battlefield 3</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>BF 3  is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="b3.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (1).jpg" alt="Game 2">
+                    <h3>Battlefield 4</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>BF 4  is a open world Online./Offline Game  .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="b4.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (5).jpg" alt="Game 2">
+                    <h3>Battlefield 5</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>BF 5 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="b5.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download.jpg" alt="Game 2">
+                    <h3>Battlefield 6</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Battlefield 6 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="b6.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (7).jpg" alt="Game 2">
+                    <h3>Battlefield ad company 1</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Battlefield ad company 1 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="bbc1.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\133.jpg" alt="Game 2">
+                    <h3>Battlefield bad company 2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.0/5)
+</div>
+                    <p>Battlefield bad company 2 is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="bbc2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+             html       <img src="images\gtA.png" alt="Game 2">
+                    <h3>gta vc </h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>gta vc  is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 1.4 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="gta vc.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (9).jpg" alt="Game 2">
+                    <h3>Back 4 Blood</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Back 4 Blood is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="back 4 blood.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (10).jpg" alt="Game 2">
+                    <h3>Days Gone</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Days Gone is a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="back 4 blood.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (11).jpg" alt="Game 2">
+                    <h3>Getting Over It</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Getting Over It is a open world Online./Offline Game.</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="getting over it.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (12).jpg" alt="Game 2">
+                    <h3>Need for Speed under ground 1</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Need for Speed under ground 1 is a open world Online./Offline Game.</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="nfs 1.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (13).jpg" alt="Game 2">
+                    <h3>Need for Speed under ground 2</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p>Need for Speed under ground 2 is a open world Online./Offline Game.</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="nfs 2.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+                    </div>
+                <div class="game-item">
+                    <img src="images\download (14).jpg" alt="Game 2">
+                    <h3>Need for Speed under ground 3</h3>
+                                        <div class="game-rating">
+    ⭐⭐⭐⭐⭐ (4.5/5)
+</div>
+                    <p> Need for Speed under groundis a open world Online./Offline Game .</p>
+                    <p><b>Size:</b> 90 GB</p>
+    <p><b>Platform:</b> PC</p>
+
+    <a href="nfs 3.html" class="neon-red-btn" target="_blank">
+                    DOWNLOAD NOW
+                </a>
+
+            </div>
+        </main>
+    </div>
+
+
+                
+  
+<section id="about" class="about">
+
+    <h2>About Robin Games</h2>
+    
+    <p>
+        Robin Games is a free gaming download website where you can download
+        PC easily with one click.
+    </p>
+    <div class="about-features">
+    <span>🎮 PC Games</span>
+</div>
+
+</section>
+
+
+    <!-- Footer -->
+<footer>
+    <a href="request.html">Request Game</a>
+        <div class="logo">ROBIN<span>  GAMES</span></div>
+        <p>Copyright © 2026 Robin Games. All Rights Reserved.</p>
+        <p style="color: #666; margin-top: 10px;">Contact: robingames@gmail.com</p>
+    </footer>
+
+
+    <script>
+        function openTab(evt, tabName) {
+            // Hide all tab contents
+            var tabContents = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            // Remove active class from all buttons
+            var tabButtons = document.getElementsByClassName("tab-button");
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            // Show the current tab and add active class to button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+    <script>
+function openTab(name){
+
+    // hide both
+    document.getElementById("pc").style.display = "none";
+    document.getElementById("android").style.display = "none";
+
+    // reset colors
+    document.getElementById("pcTab").style.color = "white";
+    document.getElementById("androidTab").style.color = "white";
+
+    // show selected
+    document.getElementById(name).style.display = "block";
+
+    // make active red
+    if(name === "pc"){
+        document.getElementById("pcTab").style.color = "red";
+    }else{
+        document.getElementById("androidTab").style.color = "red";
+    }
+}
+</script>
+</body>
+</html>
+
